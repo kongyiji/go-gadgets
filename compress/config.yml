@@ -1,0 +1,8 @@
+default:
+  backupPath: D:\Backup  
+projects:
+  test:
+    sourcePath: D:\test
+    backupPath: D:\Backup
+  config:
+    sourcePath: E:\Backup\Config
