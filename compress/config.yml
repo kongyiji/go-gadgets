@@ -3,6 +3,6 @@ default:
 projects:
   test:
     sourcePath: D:\test
-    backupPath: D:\Backup
+    backupPath: D:\Backup\test
   config:
     sourcePath: E:\Backup\Config

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"reflect"
 
 	yaml "gopkg.in/yaml.v2"
 )
@@ -33,6 +34,7 @@ func (c *conf) getConf(file string) *conf {
 
 func main() {
 	var c conf
+	// var projects []map[string]interface{}
 	c.getConf("config.yml")
 
 	// fmt.Printf("%s", c.Default.BackupPath)
@@ -40,20 +42,27 @@ func main() {
 	defaultBackupPath := c.Default.BackupPath
 
 	fmt.Println(defaultBackupPath)
+	// projects = c.Projects
+	// fmt.Println(c.Projects)
 
 	for k, v := range c.Projects {
+		// project := make(map[string]interface{})
+		// project[k] = v
+
 		fmt.Printf("key: %v\tvalue: %v\n", k, v)
-		// if reflect.TypeOf(v) == 'map' {
-		// 	fmt.Println("%v is map", v)
-		// }
+
 		if i, ok := v.(map[interface{}]interface{}); ok {
+			// fmt.Println(v)
 			for kk, vv := range i {
-				fmt.Printf("key in %v: %v\tvalue in %v: %v\n", i, kk, i, vv)
+				fmt.Println("kk: ", reflect.TypeOf(kk))
+				fmt.Println("vv: ", reflect.TypeOf(vv))
+				// fmt.Printf("-- key in %v: %v\n---- value in %v: %v\n", i, kk, i, vv)
 			}
 		}
+
 		// fmt.Println(reflect.TypeOf(v))
-		// i, ok := v.(map[interface{}]interface{})
-		// fmt.Println(i, ok)
 		// fmt.Println(v.backupPath)
+		// fmt.Println(projects)
 	}
+	// fmt.Println(projects)
 }
